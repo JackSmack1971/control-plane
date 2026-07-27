@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: requested governed configuration change
+prerequisites: [clean-worktree, explicit-write-set, baseline]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [classify, baseline, plan, apply, deterministic-validation, independent-verification]
+owning_specialist: workflow-specialist
+permitted_mutations: [declared-owned-non-generated-paths]
+deterministic_gates: [create_baseline.py, check_write_set.py, validate.py]
+human_approval_gates: [apply, commit]
+interruption_behavior: persist checkpoint; resume only after schema and baseline validation
+terminal_conditions: [verified, rejected, rolled-back]
+evidence_outputs: [baseline.json, plan.json, proposed.patch, verification.json, result.json]

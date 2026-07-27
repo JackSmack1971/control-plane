@@ -1,7 +1,22 @@
 from __future__ import annotations
-import json
-from guard_write import STATE, event
+from guard_write import event
+from state_store import make, write
+
 
 def main():
-    STATE.mkdir(parents=True, exist_ok=True); (STATE / "interruption.json").write_text(json.dumps(event(), sort_keys=True) + "\n", encoding="utf-8")
-if __name__ == "__main__": main()
+    write(
+        "interruption.json",
+        make(
+            "control-plane-recovery",
+            "hook-session",
+            "active",
+            "awaiting-approval",
+            "session interrupted",
+            [],
+            event(),
+        ),
+    )
+
+
+if __name__ == "__main__":
+    main()

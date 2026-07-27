@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: failed validation, rejected verification, or explicit rollback request
+prerequisites: [baseline, declared-write-set, failure-evidence]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [scope-check, restore-declared-paths, record-rollback, revalidate]
+owning_specialist: workflow-specialist
+permitted_mutations: [declared-owned-non-generated-paths, transaction-ledger]
+deterministic_gates: [check_write_set.py, validate.py]
+human_approval_gates: [rollback-when-scope-is-uncertain]
+interruption_behavior: block further mutation until recovery checkpoint validates
+terminal_conditions: [rolled-back, rejected]
+evidence_outputs: [baseline.json, rollback-patch, result.json]

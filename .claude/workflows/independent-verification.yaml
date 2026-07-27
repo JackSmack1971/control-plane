@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: authored governed proposal ready for review
+prerequisites: [baseline, declared-write-set, distinct-read-only-verifier]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [fresh-baseline, deterministic-validation, diff-review, semantic-review, record-findings]
+owning_specialist: control-plane-verifier
+permitted_mutations: []
+deterministic_gates: [git-diff-check, generate_policy.py-check, validate.py]
+human_approval_gates: [accept-verification, commit]
+interruption_behavior: retain read-only findings; restart deterministic checks on resume
+terminal_conditions: [verified, failed]
+evidence_outputs: [verification.json, validator-output-hashes, findings]

@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: verified repeated failure, routing regression, repeated correction, hook error, budget breach, stale instruction, official behavior change, or reproducible postmortem
+prerequisites: [two-independent-evidence-items, classified-cause, proposed-write-set]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [validate-evidence, classify-remedy, propose, await-explicit-approval, govern-change]
+owning_specialist: workflow-specialist
+permitted_mutations: [proposal-only-before-approval]
+deterministic_gates: [evidence-count-at-least-two, evidence-type-allowed, validate.py]
+human_approval_gates: [explicit-approval-before-manifest-change, independent-verification]
+interruption_behavior: preserve evidence only; do not apply a proposal on resume without approval
+terminal_conditions: [proposal-awaiting-approval, rejected, verified]
+evidence_outputs: [evidence-record, classification, proposal, approval-id]

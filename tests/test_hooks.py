@@ -23,13 +23,17 @@ def policy(tmp_path):
 
 
 def test_guard_allows_declared_and_denies_protected_unowned_and_recovery(monkeypatch, tmp_path):
+    import state_store
+
     policy(tmp_path); state = tmp_path / ".claude/control-plane/state"; state.mkdir(parents=True)
     monkeypatch.setattr(guard, "ROOT", tmp_path); monkeypatch.setattr(guard, "STATE", state)
-    (state / "active-transaction.json").write_text(json.dumps({"write_set": [".claude/hooks/ok.py"]}))
+    monkeypatch.setattr(state_store, "ROOT", ROOT); monkeypatch.setattr(state_store, "STATE", state)
+    state_store.write("recovery.json", state_store.make("governed-change", "run-001", "active", "planned", "baseline", []))
+    state_store.write("active-transaction.json", state_store.make("governed-change", "run-001", "active", "planned", "baseline", [".claude/hooks/ok.py"]))
     assert guard.allowed(".claude/hooks/ok.py") == (True, "")
     assert guard.allowed(".claude/hooks/no.py") == (False, "undeclared write path")
     assert guard.allowed(".git/config") == (False, "forbidden write path")
-    (state / "recovery-blocked").touch()
+    state_store.write("recovery.json", state_store.make("governed-change", "run-001", "terminal", "rejected", "invalid", []))
     assert guard.allowed(".claude/hooks/ok.py") == (False, "recovery state is incomplete")
 
 
@@ -67,14 +71,16 @@ def test_mutation_and_failure_hooks_persist_evidence(monkeypatch, tmp_path):
     import record_failure
     import record_mutation
 
-    for module in (record_mutation, record_failure): monkeypatch.setattr(module, "STATE", tmp_path)
+    import state_store
+
+    monkeypatch.setattr(state_store, "ROOT", ROOT); monkeypatch.setattr(state_store, "STATE", tmp_path)
     monkeypatch.setattr(record_mutation, "event", lambda: {"tool_name": "Write", "tool_input": {"file_path": str(ROOT / ".claude/hooks/x.py")}})
     monkeypatch.setattr(record_mutation, "write_paths", lambda _: [".claude/hooks/x.py"])
     record_mutation.main()
     monkeypatch.setattr(record_failure, "event", lambda: {"error": "failed"})
     record_failure.main()
-    assert json.loads((tmp_path / "mutations.jsonl").read_text())["paths"] == [".claude/hooks/x.py"]
-    assert json.loads((tmp_path / "failures.jsonl").read_text())["error"] == "failed"
+    assert json.loads((tmp_path / "mutations.jsonl").read_text())["recovery"]["evidence_paths"] == [".claude/hooks/x.py"]
+    assert json.loads((tmp_path / "failures.jsonl").read_text())["recovery"]["details"]["error"] == "failed"
 
 
 def test_dirty_state_and_compaction_fail_closed(monkeypatch, tmp_path, capsys):
@@ -87,9 +93,11 @@ def test_dirty_state_and_compaction_fail_closed(monkeypatch, tmp_path, capsys):
     monkeypatch.setattr(validate_dirty_state.subprocess, "run", lambda *_, **__: SimpleNamespace(stdout="?? .claude/hooks/x.py\n"))
     validate_dirty_state.main()
     assert json.loads(capsys.readouterr().out)["decision"] == "block"
-    monkeypatch.setattr(post_compact, "STATE", tmp_path)
+    import state_store
+
+    monkeypatch.setattr(state_store, "ROOT", ROOT); monkeypatch.setattr(state_store, "STATE", tmp_path)
     post_compact.main()
-    assert (tmp_path / "recovery-blocked").is_file()
+    assert state_store.read("recovery.json")["state"] == "rejected"
 
 
 def test_hooks_do_not_invoke_claude_tools_recursively():

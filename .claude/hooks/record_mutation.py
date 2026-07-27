@@ -1,11 +1,23 @@
 from __future__ import annotations
-import json
-from guard_write import STATE, event, write_paths
+from guard_write import event, write_paths
+from state_store import append, make
+
 
 def main():
     paths = [path for path in write_paths(event()) if path]
     if paths:
-        STATE.mkdir(parents=True, exist_ok=True)
-        with (STATE / "mutations.jsonl").open("a", encoding="utf-8", newline="\n") as out:
-            out.write(json.dumps({"paths": paths}, sort_keys=True) + "\n")
-if __name__ == "__main__": main()
+        append(
+            "mutations.jsonl",
+            make(
+                "control-plane-recovery",
+                "hook-mutation",
+                "active",
+                "awaiting-approval",
+                "mutation recorded",
+                paths,
+            ),
+        )
+
+
+if __name__ == "__main__":
+    main()

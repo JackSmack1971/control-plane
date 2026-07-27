@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: requested audit or scheduled governance review
+prerequisites: [repository-readable, generated-policy-present]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [collect, deterministic-checks, analyze, report]
+owning_specialist: control-plane-auditor
+permitted_mutations: []
+deterministic_gates: [generate_policy.py-check, inventory.py-check, check_package.py-check, validate.py]
+human_approval_gates: []
+interruption_behavior: discard incomplete report; rerun checks on resume
+terminal_conditions: [report-issued, blocked]
+evidence_outputs: [command-output, findings, residual-risks]

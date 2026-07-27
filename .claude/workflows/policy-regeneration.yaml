@@ -1,0 +1,12 @@
+version: "1.0"
+trigger: manifest or policy-generator change
+prerequisites: [declared-source-write-set, generated-output-is-read-only]
+state_schema: .claude/control-plane/schemas/workflow-state.schema.json
+stages: [validate-source, generate, drift-check, record-output]
+owning_specialist: workflow-specialist
+permitted_mutations: [.claude/control-plane/generated, .claude/settings.json]
+deterministic_gates: [generate_policy.py, generate_policy.py-check, validate.py]
+human_approval_gates: [apply-generated-output, commit]
+interruption_behavior: regenerate from source on resume; never hand-edit output
+terminal_conditions: [verified, rejected]
+evidence_outputs: [generated-file-list, drift-check-output]

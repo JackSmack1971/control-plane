@@ -30,7 +30,7 @@ EXAMPLES = {
     "verification.schema.json": {"verification_id": "verify-001", "run_id": "run-001", "verified_at": TIMESTAMP, "verifier_id": "verifier-001", "lifecycle": "completed", "deterministic_checks": [{"name": "pytest", "command": "pytest", "status": "passed", "output_hash": HASH}], "semantic_findings": [], "operations": ["read", "validate", "verify"], "content_hash": HASH},
     "result.schema.json": {"result_id": "result-001", "run_id": "run-001", "completed_at": TIMESTAMP, "lifecycle": "terminal", "terminal_result": "verified", "verification_id": "verify-001", "content_hash": HASH},
     "trust-anchor.schema.json": {"anchor_id": "anchor-001", "created_at": TIMESTAMP, "lifecycle": "active", "repository_revision": "b" * 40, "manifest_hash": HASH, "last_event_hash": HASH, "content_hash": HASH},
-    "workflow-state.schema.json": {"workflow_id": "flow-001", "run_id": "run-001", "updated_at": TIMESTAMP, "lifecycle": "active", "state": "validating", "content_hash": HASH},
+    "workflow-state.schema.json": {"schema_version": "1.0", "workflow_id": "flow-001", "run_id": "run-001", "updated_at": TIMESTAMP, "lifecycle": "active", "state": "validating", "recovery": {"checkpoint": "baseline captured", "evidence_paths": [".claude/control-plane/runs/run-001/baseline.json"], "details": {}}, "content_hash": HASH},
 }
 
 

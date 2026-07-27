@@ -1,8 +1,22 @@
 from __future__ import annotations
-import json
-from guard_write import STATE, event
+from guard_write import event
+from state_store import append, make
+
 
 def main():
-    STATE.mkdir(parents=True, exist_ok=True)
-    (STATE / "failures.jsonl").open("a", encoding="utf-8", newline="\n").write(json.dumps(event(), sort_keys=True) + "\n")
-if __name__ == "__main__": main()
+    append(
+        "failures.jsonl",
+        make(
+            "control-plane-recovery",
+            "hook-failure",
+            "active",
+            "awaiting-approval",
+            "tool failure",
+            [],
+            event(),
+        ),
+    )
+
+
+if __name__ == "__main__":
+    main()
