@@ -60,7 +60,7 @@ memory_policy:
     - signed-run-record
   reject_untracked_memory: true
 run_storage:
-  run_directory: .claude/control-plane/state/runs
+  run_directory: .claude/control-plane/runs
   events_append_only: true
   hash_chain_algorithm: sha256
   genesis_previous_hash: "0000000000000000000000000000000000000000000000000000000000000000"

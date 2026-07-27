@@ -13,9 +13,9 @@
       "type": "file"
     },
     {
-      "byte_size": 2023,
+      "byte_size": 2017,
       "path": ".claude/control-plane/manifest.yaml",
-      "sha256": "195274bb96697909ee41c1289297eed065c63a8b421047578d13c361032cbe9a",
+      "sha256": "ee9e6e37acc78bf3613b7a7bc61f38776f41760b5cd802dd47409e28dc2dfd15",
       "type": "file"
     },
     {
@@ -49,9 +49,9 @@
       "type": "file"
     },
     {
-      "byte_size": 1154,
+      "byte_size": 1329,
       "path": ".claude/control-plane/schemas/run-event.schema.json",
-      "sha256": "222f01e22a8687a001638317374e404ff23a264d16a7208059bfd9347a058df2",
+      "sha256": "9588aa0d9720f2bae67206c66a299ce20c6afafa120c2a1fbfc378a818699e06",
       "type": "file"
     },
     {
@@ -76,6 +76,12 @@
       "byte_size": 1,
       "path": ".claude/control-plane/scripts/.gitkeep",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 589,
+      "path": ".claude/control-plane/scripts/cancel_run.py",
+      "sha256": "059d7214f76cf0c5d5121e64ccb72d14dac5315d9df504d438751b0e7c6e5e39",
       "type": "file"
     },
     {
@@ -112,6 +118,30 @@
       "byte_size": 2836,
       "path": ".claude/control-plane/scripts/load_manifest.py",
       "sha256": "fb2fa7463aa4967e13205d8c1f11ee420e47531fbf359f7103f4d76f83a27c59",
+      "type": "file"
+    },
+    {
+      "byte_size": 4160,
+      "path": ".claude/control-plane/scripts/new_run.py",
+      "sha256": "6d335a69098367cde0518eb6d762333f9efb10eb4bbdcb3f889366c03fd4e4a8",
+      "type": "file"
+    },
+    {
+      "byte_size": 7715,
+      "path": ".claude/control-plane/scripts/record_event.py",
+      "sha256": "05b97a3c9a9b90bc44621c1d2adc6ec297a65c55443fa1b87965e8a5167f9019",
+      "type": "file"
+    },
+    {
+      "byte_size": 1994,
+      "path": ".claude/control-plane/scripts/transition_run.py",
+      "sha256": "437e7f9b5762a57e7c2b3141c34e7ea970c2f36d8960aac671ee7a8556300235",
+      "type": "file"
+    },
+    {
+      "byte_size": 1880,
+      "path": ".claude/control-plane/scripts/verify_ledger.py",
+      "sha256": "645f3868fe1401e84ff4c1195feb1c06af30dd5c63f8894c0e4b9c2d11a67cdf",
       "type": "file"
     },
     {
