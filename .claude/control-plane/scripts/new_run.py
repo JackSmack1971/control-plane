@@ -38,7 +38,7 @@ def _write_new(path: Path, value: Any) -> None:
 
 
 def _hashed(value: dict[str, Any]) -> dict[str, Any]:
-    value["content_hash"] = hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    value["content_hash"] = hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     return value
 
 

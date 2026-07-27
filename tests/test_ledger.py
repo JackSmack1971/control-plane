@@ -93,3 +93,12 @@ def test_evidence_cannot_change_lifecycle_state():
             append_event(run, "run-ledger-005", "evidence-recorded", "COMMITTED", {})
     finally:
         remove(run)
+
+
+def test_anchor_tracks_the_latest_ledger_event():
+    run = make_run("run-ledger-006")
+    try:
+        transition(ROOT, "run-ledger-006", "CLASSIFIED")
+        assert json.loads((run / "trust-anchor.json").read_text(encoding="utf-8"))["last_event_hash"] == anchor(run)
+    finally:
+        remove(run)

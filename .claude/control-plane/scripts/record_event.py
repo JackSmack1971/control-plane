@@ -35,6 +35,19 @@ def event_hash(event: dict[str, Any]) -> str:
     return hashlib.sha256(canonical(value)).hexdigest()
 
 
+def _refresh_anchor(run: Path, last_event_hash: str) -> None:
+    """Keep the run's anchor bound to the latest append-only ledger event."""
+    path = run / "trust-anchor.json"
+    anchor = json.loads(path.read_text(encoding="utf-8"))
+    anchor["last_event_hash"] = last_event_hash
+    payload = dict(anchor)
+    payload.pop("content_hash", None)
+    anchor["content_hash"] = hashlib.sha256(canonical(payload)).hexdigest()
+    temporary = path.with_suffix(".tmp")
+    temporary.write_text(json.dumps(anchor, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    os.replace(temporary, path)
+
+
 def run_path(root: Path, run_id: str) -> Path:
     if not ID.fullmatch(run_id):
         raise PolicyError("run id must match the declared identifier format")
@@ -142,6 +155,7 @@ def append_event(run: Path, run_id: str, event_type: str, state: str, details: d
             os.fsync(descriptor)
         finally:
             os.close(descriptor)
+        _refresh_anchor(run, event["event_hash"])
         return event
     finally:
         lock.rmdir()

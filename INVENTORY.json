@@ -61,9 +61,9 @@
       "type": "file"
     },
     {
-      "byte_size": 1541,
+      "byte_size": 1690,
       "path": ".claude/control-plane/schemas/verification.schema.json",
-      "sha256": "0cd94fb71a32e15b7c4e8e15c8be3b2c3df467b2f50334c92c444c8cd8aa33a4",
+      "sha256": "3f89a0fcef8d6f43097962717f9941ed34d88bf9586db1c3456b58d9719e1941",
       "type": "file"
     },
     {
@@ -85,9 +85,27 @@
       "type": "file"
     },
     {
+      "byte_size": 643,
+      "path": ".claude/control-plane/scripts/check_generated_drift.py",
+      "sha256": "06a1fa14a2553a3d12207ed5bb4852389b6f94b44076b0b08fedfee82c7340c6",
+      "type": "file"
+    },
+    {
+      "byte_size": 1478,
+      "path": ".claude/control-plane/scripts/check_ownership.py",
+      "sha256": "6c3b19d7921a5e2d2e7c408f7fcc512f9c97626e35336e9816f55f6f58d98946",
+      "type": "file"
+    },
+    {
       "byte_size": 3688,
       "path": ".claude/control-plane/scripts/check_package.py",
       "sha256": "8623de5d0ddd951fdafb84afaeb7ac0178260f206463b8fd68156604094f3fd3",
+      "type": "file"
+    },
+    {
+      "byte_size": 2878,
+      "path": ".claude/control-plane/scripts/check_write_set.py",
+      "sha256": "94bb27609146643225352010e5fe08bedd568d433f6ae0182e8cb8099b35396e",
       "type": "file"
     },
     {
@@ -121,21 +139,27 @@
       "type": "file"
     },
     {
-      "byte_size": 4160,
+      "byte_size": 4180,
       "path": ".claude/control-plane/scripts/new_run.py",
-      "sha256": "6d335a69098367cde0518eb6d762333f9efb10eb4bbdcb3f889366c03fd4e4a8",
+      "sha256": "2f6f2e8169d941518ed3a8dc860134022fee02be94f03c63eeb0e993c8bfbf6f",
       "type": "file"
     },
     {
-      "byte_size": 7715,
+      "byte_size": 8394,
       "path": ".claude/control-plane/scripts/record_event.py",
-      "sha256": "05b97a3c9a9b90bc44621c1d2adc6ec297a65c55443fa1b87965e8a5167f9019",
+      "sha256": "719d8d051f57419234f5cb07403f71b4a2cf5b5aa50c046a4303698a618a749c",
       "type": "file"
     },
     {
       "byte_size": 1994,
       "path": ".claude/control-plane/scripts/transition_run.py",
       "sha256": "437e7f9b5762a57e7c2b3141c34e7ea970c2f36d8960aac671ee7a8556300235",
+      "type": "file"
+    },
+    {
+      "byte_size": 10808,
+      "path": ".claude/control-plane/scripts/validate.py",
+      "sha256": "f6d680c5e814ba5e56b76f05bfe3dd6cd2e66f44532ec22813088c24d6840fe2",
       "type": "file"
     },
     {
