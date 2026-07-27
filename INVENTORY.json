@@ -259,6 +259,12 @@
       "type": "file"
     },
     {
+      "byte_size": 3309,
+      "path": ".claude/hooks/state_store.py",
+      "sha256": "e7e76b71fed68347aa95c321ac7e6d9a7da4ce2ed54b54f5dd3f427d3213bc31",
+      "type": "file"
+    },
+    {
       "byte_size": 746,
       "path": ".claude/hooks/validate_dirty_state.py",
       "sha256": "e3ad3419ece0ac65c804791dc30b69c93f0825cc7d58f5738ec737d67639aff3",
@@ -391,9 +397,45 @@
       "type": "file"
     },
     {
+      "byte_size": 637,
+      "path": ".claude/workflows/control-plane-audit.yaml",
+      "sha256": "10ffff0fa70fe8c7b39d2502d1811a0d7184f657382a478b9e33c4bcb1b8ba9f",
+      "type": "file"
+    },
+    {
       "byte_size": 819,
       "path": ".claude/workflows/evals/routing.yaml",
       "sha256": "ce1a6d2197036578cc0e4ada052794f6eefc92ad9a19f9ab64c6d8321566b247",
+      "type": "file"
+    },
+    {
+      "byte_size": 955,
+      "path": ".claude/workflows/evidence-based-self-improvement.yaml",
+      "sha256": "fa151c8f600117b8f90745465690aad5e73ec15c692e5a0f3ff0c03c343422e4",
+      "type": "file"
+    },
+    {
+      "byte_size": 741,
+      "path": ".claude/workflows/governed-change.yaml",
+      "sha256": "a5e5ac94d962198aaa4fcbb87727297e384d3ccb8465309f2903e92094ddbcf6",
+      "type": "file"
+    },
+    {
+      "byte_size": 709,
+      "path": ".claude/workflows/independent-verification.yaml",
+      "sha256": "ef4b74e3b76d740185c91a1ce6fc6405432df9b8219a1914d1f7ec33de1c0de0",
+      "type": "file"
+    },
+    {
+      "byte_size": 704,
+      "path": ".claude/workflows/policy-regeneration.yaml",
+      "sha256": "7f97411924448703dba2cec001a969614bc09441762cee05d0cdaa4c92925ede",
+      "type": "file"
+    },
+    {
+      "byte_size": 724,
+      "path": ".claude/workflows/rollback.yaml",
+      "sha256": "468717464332ace33f2604d1ac27433f946618155e3766ea0755cd50732ecc66",
       "type": "file"
     }
   ],
