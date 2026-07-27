@@ -5,6 +5,7 @@
     ".claude/control-plane/**": "control-plane",
     ".claude/hooks/**": "hook-config",
     ".claude/rules/**": "rule-config",
+    ".claude/settings.json": "hook-config",
     ".claude/skills/**": "skill-config",
     ".claude/workflows/**": "workflow-config"
   }

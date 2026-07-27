@@ -20,7 +20,7 @@ def _require_modules() -> tuple[Any, Any]:
 
 def _overlap(left: str, right: str) -> bool:
     left_prefix, right_prefix = left.removesuffix("/**"), right.removesuffix("/**")
-    return left_prefix == right_prefix or left_prefix.startswith(right_prefix + "/") or right_prefix.startswith(left_prefix + "/")
+    return left_prefix == right_prefix or left.endswith("/**") and right_prefix.startswith(left_prefix + "/") or right.endswith("/**") and left_prefix.startswith(right_prefix + "/")
 
 
 def load_manifest(root: Path | None = None) -> dict[str, Any]:

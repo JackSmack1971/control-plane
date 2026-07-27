@@ -2,7 +2,7 @@
 
 # Control-plane policy
 
-- **governed_roots**: `[".claude/agents", ".claude/hooks", ".claude/rules", ".claude/skills", ".claude/workflows", ".claude/control-plane"]`
+- **governed_roots**: `[".claude/settings.json", ".claude/agents", ".claude/hooks", ".claude/rules", ".claude/skills", ".claude/workflows", ".claude/control-plane"]`
 - **budgets**: `{"maximum_changed_files": 20, "maximum_nested_depth": 2, "maximum_specialists": 5, "maximum_turns": 40, "maximum_writers": 1}`
 - **verification**: `{"baseline_comparison_required": true, "deterministic_before_semantic": true, "independent_required": true, "rollback_on_failure": true}`
 - **memory_policy**: `{"accepted_sources": ["repository-tracked", "signed-run-record"], "reject_untracked_memory": true}`

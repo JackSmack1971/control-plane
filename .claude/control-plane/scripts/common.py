@@ -27,7 +27,7 @@ def repo_path(root: Path, value: str, *, glob: bool = False) -> str:
     path = PurePosixPath(value)
     if not glob and "*" in value:
         raise PolicyError(f"wildcards are not allowed in paths: {value!r}")
-    if glob and (not value.endswith("/**") or value.count("**") != 1 or "*" in value.removesuffix("/**")):
+    if glob and "*" in value and (not value.endswith("/**") or value.count("**") != 1 or "*" in value.removesuffix("/**")):
         raise PolicyError(f"malformed glob pattern: {value!r}")
     resolved = (root / path).resolve(strict=False)
     try:

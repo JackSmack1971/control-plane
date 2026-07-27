@@ -1,5 +1,7 @@
 # Generated from .claude/control-plane/manifest.yaml; do not edit.
 ownership_evaluations:
+- pattern: .claude/settings.json
+  specialist: hook-config
 - pattern: .claude/agents/**
   specialist: agent-config
 - pattern: .claude/hooks/**
