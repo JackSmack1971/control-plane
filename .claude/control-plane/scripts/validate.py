@@ -172,7 +172,7 @@ def _check_run(root: Path, run_id: str, report: Report) -> None:
         if anchor.get("last_event_hash") != ledger["last_event_hash"]:
             report.error("trust anchor does not match ledger")
         report.errors.extend(f"write set: {item}" for item in check_write_set(root, plan["write_set"], baseline["repository_revision"]))
-        report.errors.extend(f"ownership: {item}" for item in check_ownership(root, plan["write_set"], "control-plane"))
+        report.errors.extend(f"ownership: {item}" for item in check_ownership(root, plan["write_set"]))
         writer = plan["writer_id"]
         verifier = verification.get("verifier_id")
         if verifier == writer:

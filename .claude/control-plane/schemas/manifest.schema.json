@@ -4,7 +4,7 @@
   "title": "Control Plane Manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "governed_roots", "forbidden_roots", "generated_file_roots", "specialist_ownership", "verifier_restrictions", "operations", "budgets", "verification", "memory_policy", "run_storage", "self_improvement", "derived_artifacts"],
+  "required": ["schema_version", "governed_roots", "forbidden_roots", "generated_file_roots", "specialist_ownership", "agent_profiles", "verifier_restrictions", "operations", "budgets", "verification", "memory_policy", "run_storage", "self_improvement", "derived_artifacts"],
   "$defs": {
     "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"},
     "glob": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._*-]+(?:/[A-Za-z0-9._*-]+)*$"},
@@ -16,6 +16,7 @@
     "forbidden_roots": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/path"}},
     "generated_file_roots": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/path"}},
     "specialist_ownership": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["pattern", "specialist"], "properties": {"pattern": {"$ref": "#/$defs/glob"}, "specialist": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$"}}}},
+    "agent_profiles": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["name", "owned_paths"], "properties": {"name": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$"}, "owned_paths": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/glob"}}}}},
     "verifier_restrictions": {"type": "object", "additionalProperties": false, "required": ["read_only", "may_authorize", "may_modify_write_set", "may_be_transaction_writer"], "properties": {"read_only": {"const": true}, "may_authorize": {"const": false}, "may_modify_write_set": {"const": false}, "may_be_transaction_writer": {"const": false}}},
     "operations": {"type": "object", "additionalProperties": false, "required": ["allowed", "approval_required"], "properties": {"allowed": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["read", "propose", "validate", "verify", "generate"]}}, "approval_required": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["apply", "merge", "release"]}}}},
     "budgets": {"type": "object", "additionalProperties": false, "required": ["maximum_writers", "maximum_specialists", "maximum_nested_depth", "maximum_changed_files", "maximum_turns"], "properties": {"maximum_writers": {"const": 1}, "maximum_specialists": {"type": "integer", "minimum": 0, "maximum": 5}, "maximum_nested_depth": {"type": "integer", "minimum": 0, "maximum": 2}, "maximum_changed_files": {"type": "integer", "minimum": 1, "maximum": 20}, "maximum_turns": {"type": "integer", "minimum": 1, "maximum": 40}}},

@@ -1,0 +1,17 @@
+fixtures:
+  - request: Create a reusable release-check procedure in .claude/skills/.
+    kind: skill
+    target_paths: [.claude/skills/release-check/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Update a persistent instruction in .claude/rules/.
+    kind: rule
+    candidate: skills-specialist
+    target_paths: [.claude/rules/review.md]
+    expected_agent: rules-specialist
+    expected_result: reject-outside-ownership
+  - request: Fix the Python application handler in src/.
+    kind: application
+    expected_agent: none
+  - request: Make the configuration better.
+    kind: ambiguous
+    expected_agent: none

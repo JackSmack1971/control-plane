@@ -1,5 +1,34 @@
 {
   "_generated": "Generated from .claude/control-plane/manifest.yaml; do not edit.",
+  "agents": [
+    {
+      "name": "skills-specialist",
+      "owned_paths": [
+        ".claude/skills/**"
+      ]
+    },
+    {
+      "name": "rules-specialist",
+      "owned_paths": [
+        ".claude/rules/**"
+      ]
+    },
+    {
+      "name": "workflow-specialist",
+      "owned_paths": [
+        ".claude/workflows/**",
+        ".claude/hooks/**"
+      ]
+    },
+    {
+      "name": "control-plane-auditor",
+      "owned_paths": []
+    },
+    {
+      "name": "control-plane-verifier",
+      "owned_paths": []
+    }
+  ],
   "operations": {
     "allowed": [
       "read",

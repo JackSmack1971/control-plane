@@ -7,15 +7,45 @@
       "type": "file"
     },
     {
+      "byte_size": 1341,
+      "path": ".claude/agents/control-plane-auditor.md",
+      "sha256": "55c45dc47ddcf4835822602e5505176e65286dfa780b40baec182aefe58475d5",
+      "type": "file"
+    },
+    {
+      "byte_size": 1516,
+      "path": ".claude/agents/control-plane-verifier.md",
+      "sha256": "5c449a129f2c88ff80df614ab8f6ff0d5a817c860afc43fb3840e7bf81618651",
+      "type": "file"
+    },
+    {
+      "byte_size": 1110,
+      "path": ".claude/agents/rules-specialist.md",
+      "sha256": "94b88c3becdce0ddf493771518443ab0539ef102dc7885c49e6601e4944f3946",
+      "type": "file"
+    },
+    {
+      "byte_size": 1121,
+      "path": ".claude/agents/skills-specialist.md",
+      "sha256": "16a4d8f5fe88014bea9bb79fdf083a672f66dff78c4684464154696e3b69c8d0",
+      "type": "file"
+    },
+    {
+      "byte_size": 1230,
+      "path": ".claude/agents/workflow-specialist.md",
+      "sha256": "6b5c9b548cc1a8b34dea319331ec8022421d11e8dc272e84fade214724d10157",
+      "type": "file"
+    },
+    {
       "byte_size": 1,
       "path": ".claude/control-plane/evals/.gitkeep",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "type": "file"
     },
     {
-      "byte_size": 2017,
+      "byte_size": 2379,
       "path": ".claude/control-plane/manifest.yaml",
-      "sha256": "ee9e6e37acc78bf3613b7a7bc61f38776f41760b5cd802dd47409e28dc2dfd15",
+      "sha256": "8a2b94cb32316dd4631ff292cf221f6d701b7cb60b44653e18f66d31ad31f42f",
       "type": "file"
     },
     {
@@ -37,9 +67,9 @@
       "type": "file"
     },
     {
-      "byte_size": 4385,
+      "byte_size": 4748,
       "path": ".claude/control-plane/schemas/manifest.schema.json",
-      "sha256": "28514ce8875495de4bed59ddcc47fd41d3531e6ee3eb7bded0bf3c72608b8ba1",
+      "sha256": "f56cf4d21cb0066180bcc9ddee687aef7cabaaed4eed514fe8001270c10c7580",
       "type": "file"
     },
     {
@@ -103,9 +133,9 @@
       "type": "file"
     },
     {
-      "byte_size": 2878,
+      "byte_size": 2972,
       "path": ".claude/control-plane/scripts/check_write_set.py",
-      "sha256": "94bb27609146643225352010e5fe08bedd568d433f6ae0182e8cb8099b35396e",
+      "sha256": "5f1dd48e28cc1021e7285d8e7dee2cb2f51c818abe819bdebe160e2d82b19f1f",
       "type": "file"
     },
     {
@@ -121,9 +151,9 @@
       "type": "file"
     },
     {
-      "byte_size": 3324,
+      "byte_size": 3362,
       "path": ".claude/control-plane/scripts/generate_policy.py",
-      "sha256": "3f6fc7d644d26807dbddb75f6dc577ddaf537b6d024392f9ca127d322a51244c",
+      "sha256": "c5c51b8e9c3cfd9b6e268aafeb695ab266be49f9696fee0f71456becdbfdb483",
       "type": "file"
     },
     {
@@ -157,9 +187,9 @@
       "type": "file"
     },
     {
-      "byte_size": 10808,
+      "byte_size": 10791,
       "path": ".claude/control-plane/scripts/validate.py",
-      "sha256": "f6d680c5e814ba5e56b76f05bfe3dd6cd2e66f44532ec22813088c24d6840fe2",
+      "sha256": "aacc1a8b17276c98b7362047bd8aff455feb9c25846a930087929938ac931c83",
       "type": "file"
     },
     {
@@ -187,15 +217,33 @@
       "type": "file"
     },
     {
+      "byte_size": 538,
+      "path": ".claude/rules/evals/routing.yaml",
+      "sha256": "2efc697583b64b10e84915bf7f846da731058d681a5977450cdc567cec1a6a18",
+      "type": "file"
+    },
+    {
       "byte_size": 1,
       "path": ".claude/skills/.gitkeep",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "type": "file"
     },
     {
+      "byte_size": 629,
+      "path": ".claude/skills/evals/routing.yaml",
+      "sha256": "7788d086cb6c0c2ddbd9b82c119485ff5ba5e3cb6eec431aa6353efc62f2f7f8",
+      "type": "file"
+    },
+    {
       "byte_size": 1,
       "path": ".claude/workflows/.gitkeep",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 819,
+      "path": ".claude/workflows/evals/routing.yaml",
+      "sha256": "ce1a6d2197036578cc0e4ada052794f6eefc92ad9a19f9ab64c6d8321566b247",
       "type": "file"
     }
   ],

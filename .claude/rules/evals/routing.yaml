@@ -1,0 +1,14 @@
+fixtures:
+  - request: Add a path-scoped instruction under .claude/rules/.
+    kind: rule
+    target_paths: [.claude/rules/review.md]
+    expected_agent: rules-specialist
+  - request: Add a reusable procedure under .claude/skills/.
+    kind: skill
+    candidate: rules-specialist
+    target_paths: [.claude/skills/release-check/SKILL.md]
+    expected_agent: skills-specialist
+    expected_result: reject-outside-ownership
+  - request: Inspect policy drift without making changes.
+    kind: audit
+    expected_agent: control-plane-auditor

@@ -28,3 +28,10 @@ def test_write_set_rejects_unused_declared_authority(monkeypatch):
     monkeypatch.setattr(check_write_set, "changed_paths", lambda root, revision: [])
     errors = check_write_set.check_write_set(ROOT, [".claude/control-plane/scripts/validate.py"], "HEAD")
     assert errors == ["declared path was not changed: .claude/control-plane/scripts/validate.py"]
+
+
+def test_write_set_excludes_regenerated_policy_from_declared_authority(monkeypatch):
+    monkeypatch.setattr(check_write_set, "changed_paths", lambda root, revision: [".claude/control-plane/generated/agent-capabilities.json"])
+    assert check_write_set.check_write_set(ROOT, [".claude/control-plane/scripts/validate.py"], "HEAD") == [
+        "declared path was not changed: .claude/control-plane/scripts/validate.py"
+    ]

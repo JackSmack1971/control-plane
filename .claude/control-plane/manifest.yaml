@@ -27,6 +27,21 @@ specialist_ownership:
     specialist: workflow-config
   - pattern: .claude/control-plane/**
     specialist: control-plane
+agent_profiles:
+  - name: skills-specialist
+    owned_paths:
+      - .claude/skills/**
+  - name: rules-specialist
+    owned_paths:
+      - .claude/rules/**
+  - name: workflow-specialist
+    owned_paths:
+      - .claude/workflows/**
+      - .claude/hooks/**
+  - name: control-plane-auditor
+    owned_paths: []
+  - name: control-plane-verifier
+    owned_paths: []
 verifier_restrictions:
   read_only: true
   may_authorize: false

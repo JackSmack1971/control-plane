@@ -35,7 +35,12 @@ def check_write_set(root, declared: list[str], revision: str) -> list[str]:
         return [str(error)]
     if len(declared) != len(set(declared)):
         return ["declared write set contains duplicate paths"]
-    changed = [path for path in changed_paths(root, revision) if _within(path, manifest["governed_roots"])]
+    changed = [
+        path
+        for path in changed_paths(root, revision)
+        if _within(path, manifest["governed_roots"])
+        and not _within(path, manifest["generated_file_roots"])
+    ]
     errors = []
     if len(changed) > manifest["budgets"]["maximum_changed_files"]:
         errors.append("changed-file budget exceeded")

@@ -1,0 +1,19 @@
+fixtures:
+  - request: Add a staged workflow with a hook and workflow-local schema.
+    kind: workflow
+    target_paths: [.claude/workflows/release.yaml, .claude/hooks/release.py]
+    expected_agent: workflow-specialist
+  - request: Independently review this control-plane transaction after its author finishes.
+    kind: verification
+    expected_agent: control-plane-verifier
+  - request: Write a hook under .claude/hooks/ from the skills specialist.
+    kind: workflow
+    candidate: skills-specialist
+    target_paths: [.claude/hooks/release.py]
+    expected_agent: skills-specialist
+    expected_result: reject-outside-ownership
+  - request: Have the verifier edit the proposed workflow.
+    kind: verification
+    write_requested: true
+    expected_agent: control-plane-verifier
+    expected_result: reject-write

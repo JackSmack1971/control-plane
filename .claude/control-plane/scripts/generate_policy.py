@@ -28,7 +28,7 @@ def render(manifest: dict) -> dict[str, str]:
         "README.md": "<!-- " + HEADER + " -->\n\n# Generated policy\n\nThese files are derived from `../manifest.yaml`. Run:\n\n```powershell\npython .claude/control-plane/scripts/generate_policy.py\npython .claude/control-plane/scripts/generate_policy.py --check\n```\n",
         "ownership-map.json": _json({"ownership": ownership}),
         "protected-paths.json": _json({"forbidden_roots": manifest["forbidden_roots"], "generated_file_roots": manifest["generated_file_roots"]}),
-        "agent-capabilities.json": _json({"operations": manifest["operations"], "verifier_restrictions": manifest["verifier_restrictions"]}),
+        "agent-capabilities.json": _json({"agents": manifest["agent_profiles"], "operations": manifest["operations"], "verifier_restrictions": manifest["verifier_restrictions"]}),
         "policy-summary.md": "<!-- " + HEADER + " -->\n\n# Control-plane policy\n\n" + "\n".join(f"- **{key}**: `{json.dumps(manifest[key], sort_keys=True)}`" for key in ("governed_roots", "budgets", "verification", "memory_policy", "run_storage", "self_improvement")) + "\n",
         "ownership-evals.yaml": _yaml({"ownership_evaluations": [{"pattern": pattern, "specialist": specialist} for pattern, specialist in ownership.items()]}),
     }
