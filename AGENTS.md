@@ -20,4 +20,5 @@ Run deterministic validation first, then obtain an independent read-only review.
 - Generated files are read-only; regenerate them through their owning process.
 - Do not edit application source from control-plane work.
 - Do not manually edit generated policy files or bypass the manifest policy once introduced.
+- Files under `.claude/control-plane/generated/` are generated from `manifest.yaml`; update them only by running the generator.
 - Keep persistent instructions concise and scoped; put multi-step procedures in skills or workflows.

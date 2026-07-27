@@ -1,0 +1,11 @@
+{
+  "_generated": "Generated from .claude/control-plane/manifest.yaml; do not edit.",
+  "ownership": {
+    ".claude/agents/**": "agent-config",
+    ".claude/control-plane/**": "control-plane",
+    ".claude/hooks/**": "hook-config",
+    ".claude/rules/**": "rule-config",
+    ".claude/skills/**": "skill-config",
+    ".claude/workflows/**": "workflow-config"
+  }
+}

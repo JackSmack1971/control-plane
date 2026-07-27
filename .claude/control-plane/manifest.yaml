@@ -69,6 +69,9 @@ self_improvement:
   minimum_passing_runs: 3
   minimum_days_observed: 14
 derived_artifacts:
-  - .claude/control-plane/generated/policy.md
-  - .claude/control-plane/generated/permissions.json
-  - .claude/control-plane/generated/ownership.json
+  - .claude/control-plane/generated/README.md
+  - .claude/control-plane/generated/ownership-map.json
+  - .claude/control-plane/generated/protected-paths.json
+  - .claude/control-plane/generated/agent-capabilities.json
+  - .claude/control-plane/generated/policy-summary.md
+  - .claude/control-plane/generated/ownership-evals.yaml

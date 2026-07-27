@@ -1,0 +1,14 @@
+# Generated from .claude/control-plane/manifest.yaml; do not edit.
+ownership_evaluations:
+- pattern: .claude/agents/**
+  specialist: agent-config
+- pattern: .claude/hooks/**
+  specialist: hook-config
+- pattern: .claude/rules/**
+  specialist: rule-config
+- pattern: .claude/skills/**
+  specialist: skill-config
+- pattern: .claude/workflows/**
+  specialist: workflow-config
+- pattern: .claude/control-plane/**
+  specialist: control-plane

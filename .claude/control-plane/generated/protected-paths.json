@@ -1,0 +1,13 @@
+{
+  "_generated": "Generated from .claude/control-plane/manifest.yaml; do not edit.",
+  "forbidden_roots": [
+    ".git",
+    "docs/claude-code-docs",
+    "src",
+    "app",
+    "lib"
+  ],
+  "generated_file_roots": [
+    ".claude/control-plane/generated"
+  ]
+}

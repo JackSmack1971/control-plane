@@ -1,0 +1,23 @@
+{
+  "_generated": "Generated from .claude/control-plane/manifest.yaml; do not edit.",
+  "operations": {
+    "allowed": [
+      "read",
+      "propose",
+      "validate",
+      "verify",
+      "generate"
+    ],
+    "approval_required": [
+      "apply",
+      "merge",
+      "release"
+    ]
+  },
+  "verifier_restrictions": {
+    "may_authorize": false,
+    "may_be_transaction_writer": false,
+    "may_modify_write_set": false,
+    "read_only": true
+  }
+}

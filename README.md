@@ -21,4 +21,15 @@ python -m pytest
 python -m ruff check .
 ```
 
+## Generated policy
+
+`manifest.yaml` is the source for generated policy artifacts. Regenerate and check them with:
+
+```powershell
+python .claude/control-plane/scripts/generate_policy.py
+python .claude/control-plane/scripts/generate_policy.py --check
+```
+
+Generated files are committed with their source and must not be edited by hand.
+
 Before submitting a change, run `git diff --check` and the validation appropriate to the artifact changed.
