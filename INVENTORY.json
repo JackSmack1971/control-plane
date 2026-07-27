@@ -217,6 +217,54 @@
       "type": "file"
     },
     {
+      "byte_size": 3487,
+      "path": ".claude/hooks/guard_write.py",
+      "sha256": "4bfba9b363085baa977f7bb8258eed57df9fe47ea062c84611bba605e1d76e33",
+      "type": "file"
+    },
+    {
+      "byte_size": 378,
+      "path": ".claude/hooks/instructions_loaded.py",
+      "sha256": "f620d8510f22aed3142f3d6f27e939bf1a49d1683911207be360ea66e2deb2dc",
+      "type": "file"
+    },
+    {
+      "byte_size": 1255,
+      "path": ".claude/hooks/post_compact.py",
+      "sha256": "4b29c393d987fd3eef3954409ea1684cd57da4349a27659983a5a0e3fe53a718",
+      "type": "file"
+    },
+    {
+      "byte_size": 877,
+      "path": ".claude/hooks/pre_compact.py",
+      "sha256": "2b48062a6bc03cfef8eb344753b66b0c91775aa937d99eba3c4604ce8868de00",
+      "type": "file"
+    },
+    {
+      "byte_size": 299,
+      "path": ".claude/hooks/record_failure.py",
+      "sha256": "31f894aa615612850ad2cf339546011a4b76b79c61c18557b89248f114ed3a12",
+      "type": "file"
+    },
+    {
+      "byte_size": 433,
+      "path": ".claude/hooks/record_mutation.py",
+      "sha256": "35a102ce7ed55668bbf8e894aa89f187bba997edf535de493ccd4bcb8bdbe995",
+      "type": "file"
+    },
+    {
+      "byte_size": 280,
+      "path": ".claude/hooks/session_end.py",
+      "sha256": "2748fcc0eb4dd0aa8250c3d19f1ac73b2af5dbae19db44a8bd181273604d92d2",
+      "type": "file"
+    },
+    {
+      "byte_size": 703,
+      "path": ".claude/hooks/validate_dirty_state.py",
+      "sha256": "20980723570c15579c2a2b861e9bf7b0035c6e00da77d956d15620ddb4d5fbf5",
+      "type": "file"
+    },
+    {
       "byte_size": 1,
       "path": ".claude/rules/.gitkeep",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -268,6 +316,12 @@
       "byte_size": 277,
       "path": ".claude/rules/workflows-and-hooks.md",
       "sha256": "b910b88cbd9e274065fa397cc2404dbae5aa8e151ee2f70a4b7fa58a9c30417e",
+      "type": "file"
+    },
+    {
+      "byte_size": 4266,
+      "path": ".claude/settings.json",
+      "sha256": "42cc74ec4643f706afc55cfb7eca436305a437ba67e1a51a6e297219939f5a90",
       "type": "file"
     },
     {
