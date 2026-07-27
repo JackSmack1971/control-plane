@@ -1,0 +1,7 @@
+# Preserve Markdown hard line breaks in supplied reference material.
+"docs/Claude Code Dynamic Workflows/**" -whitespace
+"docs/Claude Code Skill Creation Methodology/**" -whitespace
+"docs/Claude Code Sub-Agent Methodology/**" -whitespace
+docs/claude-code-docs/** -whitespace
+docs/context-compaction/** -whitespace
+docs/decision-framework-agentic-behavior/** -whitespace
