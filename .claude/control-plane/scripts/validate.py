@@ -19,6 +19,7 @@ from check_ownership import check_ownership
 from check_package import check as check_package
 from check_write_set import changed_paths, check_write_set
 from common import PolicyError, repository_root
+from context_budget import BUDGET_BYTES, report as context_report
 from inventory import check_inventory
 from load_manifest import load_manifest
 from record_event import read_events, run_path, verify_events
@@ -205,6 +206,11 @@ def validate(root: Path, mode: str, run_id: str | None = None) -> Report:
         report.error("inventory drift")
     else:
         report.passed("inventory")
+    context_size, _ = context_report(root)
+    if context_size > BUDGET_BYTES:
+        report.error(f"always-loaded instruction budget exceeded: {context_size}/{BUDGET_BYTES} bytes")
+    else:
+        report.passed("always-loaded instruction budget")
     _check_secrets(root, manifest, report)
     if run_id:
         _check_run(root, run_id, report)

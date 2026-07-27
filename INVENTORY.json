@@ -145,6 +145,12 @@
       "type": "file"
     },
     {
+      "byte_size": 1493,
+      "path": ".claude/control-plane/scripts/context_budget.py",
+      "sha256": "862fd2accf3fa4e8c6f193c329a2bd88ab800e906fadd7534fa08dbcda34b255",
+      "type": "file"
+    },
+    {
       "byte_size": 5732,
       "path": ".claude/control-plane/scripts/create_baseline.py",
       "sha256": "1c73c4006fe419cb5e65aa00645274003f98af19d1fc42662e759153ddb6b92d",
@@ -187,9 +193,9 @@
       "type": "file"
     },
     {
-      "byte_size": 10791,
+      "byte_size": 11108,
       "path": ".claude/control-plane/scripts/validate.py",
-      "sha256": "aacc1a8b17276c98b7362047bd8aff455feb9c25846a930087929938ac931c83",
+      "sha256": "0f80b3569f6dd6450b6fb044dde82998298f4fac3c69ecae624319aae634ac83",
       "type": "file"
     },
     {
@@ -217,9 +223,51 @@
       "type": "file"
     },
     {
-      "byte_size": 538,
+      "byte_size": 269,
+      "path": ".claude/rules/agent-definitions.md",
+      "sha256": "fd8347a0f82cc8b398c99263cb5a86cf8de38c59f7bac402c76c39c8a118076c",
+      "type": "file"
+    },
+    {
+      "byte_size": 299,
+      "path": ".claude/rules/control-plane-python.md",
+      "sha256": "91c1229a188db9d78a566da41eef1286987917dace9b98f0974aed6909725158",
+      "type": "file"
+    },
+    {
+      "byte_size": 9205,
       "path": ".claude/rules/evals/routing.yaml",
-      "sha256": "2efc697583b64b10e84915bf7f846da731058d681a5977450cdc567cec1a6a18",
+      "sha256": "d8b523b2e76c99830018ec689139eb85162e05ed41b5f00c7756fce4c9d1f183",
+      "type": "file"
+    },
+    {
+      "byte_size": 187,
+      "path": ".claude/rules/generated-artifacts.md",
+      "sha256": "797817c614a966c46304f2ffc1e9108d34b23285c89f258fe326d56ec2515630",
+      "type": "file"
+    },
+    {
+      "byte_size": 398,
+      "path": ".claude/rules/schemas-and-data.md",
+      "sha256": "3a7615ef60dbcc577780d7d3510d2439285a188f8daf572849910ce51ab93f80",
+      "type": "file"
+    },
+    {
+      "byte_size": 309,
+      "path": ".claude/rules/skills.md",
+      "sha256": "0d54723dae372745e23eb2f0860f6ef6e2643d403b8c3738bf9c7f2b11d921e8",
+      "type": "file"
+    },
+    {
+      "byte_size": 283,
+      "path": ".claude/rules/tests-and-evals.md",
+      "sha256": "cd33cfe6805ed50f52573ce9472d119d90a32717cb6c481c3ecb64b469b6757f",
+      "type": "file"
+    },
+    {
+      "byte_size": 277,
+      "path": ".claude/rules/workflows-and-hooks.md",
+      "sha256": "b910b88cbd9e274065fa397cc2404dbae5aa8e151ee2f70a4b7fa58a9c30417e",
       "type": "file"
     },
     {
@@ -229,9 +277,57 @@
       "type": "file"
     },
     {
+      "byte_size": 688,
+      "path": ".claude/skills/audit-context-and-instructions/SKILL.md",
+      "sha256": "d80b906b6db598d7b30ec1ab5bafec3f7674d04188a1870f4606e3b34c6df910",
+      "type": "file"
+    },
+    {
+      "byte_size": 667,
+      "path": ".claude/skills/author-governed-change/SKILL.md",
+      "sha256": "ea6bd7f18d9467648725387f7fd23be16b8ce172101aa268052559509e05ba1e",
+      "type": "file"
+    },
+    {
       "byte_size": 629,
       "path": ".claude/skills/evals/routing.yaml",
       "sha256": "7788d086cb6c0c2ddbd9b82c119485ff5ba5e3cb6eec431aa6353efc62f2f7f8",
+      "type": "file"
+    },
+    {
+      "byte_size": 658,
+      "path": ".claude/skills/independently-verify-change/SKILL.md",
+      "sha256": "1838122d36f912b5f22afd58034a7e27cc64666bd5dfd95d1a427e736dcd0926",
+      "type": "file"
+    },
+    {
+      "byte_size": 729,
+      "path": ".claude/skills/propose-evidence-based-improvement/SKILL.md",
+      "sha256": "7e5a9f5475dd6ce8e3123f2868f2165914819fe33d85a583056fc66ea6b2c09b",
+      "type": "file"
+    },
+    {
+      "byte_size": 615,
+      "path": ".claude/skills/regenerate-policy/SKILL.md",
+      "sha256": "5736e2b176e5a82c40b272834327938b4ac55c98179732b96a72f79245df6b70",
+      "type": "file"
+    },
+    {
+      "byte_size": 658,
+      "path": ".claude/skills/rollback-failed-transaction/SKILL.md",
+      "sha256": "afd26440aa171cb70217eb3447985079a90f4166d751a597dff680594078fd8b",
+      "type": "file"
+    },
+    {
+      "byte_size": 641,
+      "path": ".claude/skills/start-control-plane-transaction/SKILL.md",
+      "sha256": "291dcd8e2055c64e2ad40cefc12a5c79c66374195d4d92703bad9ca9d193b184",
+      "type": "file"
+    },
+    {
+      "byte_size": 579,
+      "path": ".claude/skills/validate-write-set/SKILL.md",
+      "sha256": "feea5a98e2278bf7b98f59041469d98bbe15d4b145453a6213d00812119ec688",
       "type": "file"
     },
     {

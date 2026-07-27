@@ -1,8 +1,254 @@
 fixtures:
-  - request: Add a path-scoped instruction under .claude/rules/.
+  - request: Add a path-scoped instruction for Python control-plane scripts.
+    category: control-plane-python
+    case: positive
     kind: rule
-    target_paths: [.claude/rules/review.md]
+    target_paths: [.claude/rules/control-plane-python.md]
     expected_agent: rules-specialist
+  - request: Add Python application code under src.
+    category: control-plane-python
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Update an adjacent control-plane schema.
+    category: control-plane-python
+    case: boundary
+    kind: rule
+    target_paths: [.claude/rules/schemas-and-data.md]
+    expected_agent: rules-specialist
+  - request: Add deterministic JSON schema instructions.
+    category: schemas-and-data
+    case: positive
+    kind: rule
+    target_paths: [.claude/rules/schemas-and-data.md]
+    expected_agent: rules-specialist
+  - request: Add a runtime feature flag.
+    category: schemas-and-data
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Regenerate inventory evidence.
+    category: schemas-and-data
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/regenerate-policy/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Revise agent-definition instructions.
+    category: agent-definitions
+    case: positive
+    kind: rule
+    target_paths: [.claude/rules/agent-definitions.md]
+    expected_agent: rules-specialist
+  - request: Author an application subagent.
+    category: agent-definitions
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Verify a proposed agent definition without editing.
+    category: agent-definitions
+    case: boundary
+    kind: verification
+    expected_agent: control-plane-verifier
+  - request: Add a reusable control-plane procedure.
+    category: skills
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/example/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Put a workflow state machine in a skill.
+    category: skills
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Add a routing fixture for a skill.
+    category: skills
+    case: boundary
+    kind: rule
+    target_paths: [.claude/rules/skills.md]
+    expected_agent: rules-specialist
+  - request: Add a governed workflow.
+    category: workflows-and-hooks
+    case: positive
+    kind: workflow
+    target_paths: [.claude/workflows/change.yaml]
+    expected_agent: workflow-specialist
+  - request: Put a hook command in application source.
+    category: workflows-and-hooks
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Add hook-specific instructions.
+    category: workflows-and-hooks
+    case: boundary
+    kind: rule
+    target_paths: [.claude/rules/workflows-and-hooks.md]
+    expected_agent: rules-specialist
+  - request: Inspect generated policy artifacts.
+    category: generated-artifacts
+    case: positive
+    kind: audit
+    expected_agent: control-plane-auditor
+  - request: Manually edit generated policy output.
+    category: generated-artifacts
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Regenerate generated policy from its manifest.
+    category: generated-artifacts
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/regenerate-policy/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Add evaluation fixture instructions.
+    category: tests-and-evals
+    case: positive
+    kind: rule
+    target_paths: [.claude/rules/tests-and-evals.md]
+    expected_agent: rules-specialist
+  - request: Delete tests because validation is enough.
+    category: tests-and-evals
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Run independent verification after tests.
+    category: tests-and-evals
+    case: boundary
+    kind: verification
+    expected_agent: control-plane-verifier
+  - request: Start a governed transaction.
+    category: start-control-plane-transaction
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/start-control-plane-transaction/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Start a transaction for application source.
+    category: start-control-plane-transaction
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Validate an existing transaction baseline.
+    category: start-control-plane-transaction
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/validate-write-set/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Validate a declared control-plane write set.
+    category: validate-write-set
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/validate-write-set/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Use write-set validation to approve a merge.
+    category: validate-write-set
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Check a path outside the declared set.
+    category: validate-write-set
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/validate-write-set/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Author a bounded governed proposal.
+    category: author-governed-change
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/author-governed-change/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Author application code through the control plane.
+    category: author-governed-change
+    case: negative
+    kind: application
+    expected_agent: none
+  - request: Amend a declared proposal after scope drift.
+    category: author-governed-change
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/author-governed-change/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Independently review a governed proposal.
+    category: independently-verify-change
+    case: positive
+    kind: verification
+    expected_agent: control-plane-verifier
+  - request: Have the writer verify its own change.
+    category: independently-verify-change
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Verify a proposal after deterministic checks pass.
+    category: independently-verify-change
+    case: boundary
+    kind: verification
+    expected_agent: control-plane-verifier
+  - request: Roll back a failed governed transaction.
+    category: rollback-failed-transaction
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/rollback-failed-transaction/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Discard unrelated user work.
+    category: rollback-failed-transaction
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Reject a transaction with uncertain scope.
+    category: rollback-failed-transaction
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/rollback-failed-transaction/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Regenerate policy after manifest changes.
+    category: regenerate-policy
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/regenerate-policy/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Hand-edit generated policy.
+    category: regenerate-policy
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Check generated-policy drift.
+    category: regenerate-policy
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/regenerate-policy/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Audit instruction context size.
+    category: audit-context-and-instructions
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/audit-context-and-instructions/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Add an unconditional rule without measuring it.
+    category: audit-context-and-instructions
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Move a long procedure from a rule into a skill.
+    category: audit-context-and-instructions
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/audit-context-and-instructions/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Propose a control-plane improvement with repeated evidence.
+    category: propose-evidence-based-improvement
+    case: positive
+    kind: skill
+    target_paths: [.claude/skills/propose-evidence-based-improvement/SKILL.md]
+    expected_agent: skills-specialist
+  - request: Change policy from a single preference.
+    category: propose-evidence-based-improvement
+    case: negative
+    kind: ambiguous
+    expected_agent: none
+  - request: Classify a supported improvement before proposing it.
+    category: propose-evidence-based-improvement
+    case: boundary
+    kind: skill
+    target_paths: [.claude/skills/propose-evidence-based-improvement/SKILL.md]
+    expected_agent: skills-specialist
   - request: Add a reusable procedure under .claude/skills/.
     kind: skill
     candidate: rules-specialist
