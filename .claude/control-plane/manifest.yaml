@@ -1,0 +1,74 @@
+schema_version: "1.0"
+governed_roots:
+  - .claude/agents
+  - .claude/hooks
+  - .claude/rules
+  - .claude/skills
+  - .claude/workflows
+  - .claude/control-plane
+forbidden_roots:
+  - .git
+  - docs/claude-code-docs
+  - src
+  - app
+  - lib
+generated_file_roots:
+  - .claude/control-plane/generated
+specialist_ownership:
+  - pattern: .claude/agents/**
+    specialist: agent-config
+  - pattern: .claude/hooks/**
+    specialist: hook-config
+  - pattern: .claude/rules/**
+    specialist: rule-config
+  - pattern: .claude/skills/**
+    specialist: skill-config
+  - pattern: .claude/workflows/**
+    specialist: workflow-config
+  - pattern: .claude/control-plane/**
+    specialist: control-plane
+verifier_restrictions:
+  read_only: true
+  may_authorize: false
+  may_modify_write_set: false
+  may_be_transaction_writer: false
+operations:
+  allowed:
+    - read
+    - propose
+    - validate
+    - verify
+    - generate
+  approval_required:
+    - apply
+    - merge
+    - release
+budgets:
+  maximum_writers: 1
+  maximum_specialists: 5
+  maximum_nested_depth: 2
+  maximum_changed_files: 20
+  maximum_turns: 40
+verification:
+  independent_required: true
+  deterministic_before_semantic: true
+  rollback_on_failure: true
+  baseline_comparison_required: true
+memory_policy:
+  accepted_sources:
+    - repository-tracked
+    - signed-run-record
+  reject_untracked_memory: true
+run_storage:
+  run_directory: .claude/control-plane/state/runs
+  events_append_only: true
+  hash_chain_algorithm: sha256
+  genesis_previous_hash: "0000000000000000000000000000000000000000000000000000000000000000"
+self_improvement:
+  minimum_independent_evidence: 2
+  minimum_passing_runs: 3
+  minimum_days_observed: 14
+derived_artifacts:
+  - .claude/control-plane/generated/policy.md
+  - .claude/control-plane/generated/permissions.json
+  - .claude/control-plane/generated/ownership.json
