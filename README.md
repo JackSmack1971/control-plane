@@ -32,4 +32,26 @@ python .claude/control-plane/scripts/generate_policy.py --check
 
 Generated files are committed with their source and must not be edited by hand.
 
+## Evidence commands
+
+Create or verify the committed governed-file inventory:
+
+```powershell
+python .claude/control-plane/scripts/inventory.py
+python .claude/control-plane/scripts/inventory.py --check
+```
+
+Capture a pre-mutation baseline from an explicit JSON write-set, without changing governed files:
+
+```powershell
+python .claude/control-plane/scripts/create_baseline.py --baseline-id base-001 --write-set write-set.json --output .claude/control-plane/state/runs/base-001.json
+```
+
+Create or verify the tracked package scaffold manifest:
+
+```powershell
+python .claude/control-plane/scripts/check_package.py --write
+python .claude/control-plane/scripts/check_package.py --check
+```
+
 Before submitting a change, run `git diff --check` and the validation appropriate to the artifact changed.

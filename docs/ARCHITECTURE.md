@@ -8,6 +8,8 @@ The control plane governs Claude Code configuration artifacts under `.claude/`. 
 
 Each future transaction has one primary writer and an explicit write set. It runs deterministic validation before semantic review, then an independent read-only verifier checks the authored result. Failed verification causes rejection or rollback.
 
+Before a write, the writer captures a schema-valid baseline for the declared set and compares it to the committed governed-file inventory. Package integrity verifies that the tracked scaffold matches its SHA-256 manifest.
+
 The control plane can prepare a proposal but cannot approve that proposal in the same run. Human or otherwise independent authorization remains outside the writer's authority.
 
 ## Artifact areas

@@ -1,0 +1,149 @@
+{
+  "files": [
+    {
+      "byte_size": 1,
+      "path": ".claude/agents/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/control-plane/evals/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 2023,
+      "path": ".claude/control-plane/manifest.yaml",
+      "sha256": "195274bb96697909ee41c1289297eed065c63a8b421047578d13c361032cbe9a",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/control-plane/schemas/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1425,
+      "path": ".claude/control-plane/schemas/baseline.schema.json",
+      "sha256": "f1d09c430b23f96098d37f98147578b3af0908d0da1ea1d04678e67df2cb7fb4",
+      "type": "file"
+    },
+    {
+      "byte_size": 1241,
+      "path": ".claude/control-plane/schemas/change-plan.schema.json",
+      "sha256": "5820a5797cda65df17fab3c77c86e53dc7fa2bb969fd58df6fa8c2b9ef93664a",
+      "type": "file"
+    },
+    {
+      "byte_size": 4385,
+      "path": ".claude/control-plane/schemas/manifest.schema.json",
+      "sha256": "28514ce8875495de4bed59ddcc47fd41d3531e6ee3eb7bded0bf3c72608b8ba1",
+      "type": "file"
+    },
+    {
+      "byte_size": 847,
+      "path": ".claude/control-plane/schemas/result.schema.json",
+      "sha256": "790c243f4c71e2c02588281af85f0104b3eb03f329d5fe87e555b677261f8031",
+      "type": "file"
+    },
+    {
+      "byte_size": 1154,
+      "path": ".claude/control-plane/schemas/run-event.schema.json",
+      "sha256": "222f01e22a8687a001638317374e404ff23a264d16a7208059bfd9347a058df2",
+      "type": "file"
+    },
+    {
+      "byte_size": 897,
+      "path": ".claude/control-plane/schemas/trust-anchor.schema.json",
+      "sha256": "c387163d9dc407c694a9daca0bf2b63b1c8b9198056b3edc5e3cf93b8da09549",
+      "type": "file"
+    },
+    {
+      "byte_size": 1541,
+      "path": ".claude/control-plane/schemas/verification.schema.json",
+      "sha256": "0cd94fb71a32e15b7c4e8e15c8be3b2c3df467b2f50334c92c444c8cd8aa33a4",
+      "type": "file"
+    },
+    {
+      "byte_size": 1174,
+      "path": ".claude/control-plane/schemas/workflow-state.schema.json",
+      "sha256": "882dc2a8075ff954654f407649453bb2ae5756f4c3473686008e9802d7183edf",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/control-plane/scripts/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 3688,
+      "path": ".claude/control-plane/scripts/check_package.py",
+      "sha256": "8623de5d0ddd951fdafb84afaeb7ac0178260f206463b8fd68156604094f3fd3",
+      "type": "file"
+    },
+    {
+      "byte_size": 1673,
+      "path": ".claude/control-plane/scripts/common.py",
+      "sha256": "4fe193e422e7b4bee1b9c277e401bbd57b508c219d66bd559f5de5936f50eefd",
+      "type": "file"
+    },
+    {
+      "byte_size": 5732,
+      "path": ".claude/control-plane/scripts/create_baseline.py",
+      "sha256": "1c73c4006fe419cb5e65aa00645274003f98af19d1fc42662e759153ddb6b92d",
+      "type": "file"
+    },
+    {
+      "byte_size": 3324,
+      "path": ".claude/control-plane/scripts/generate_policy.py",
+      "sha256": "3f6fc7d644d26807dbddb75f6dc577ddaf537b6d024392f9ca127d322a51244c",
+      "type": "file"
+    },
+    {
+      "byte_size": 3430,
+      "path": ".claude/control-plane/scripts/inventory.py",
+      "sha256": "02d8c6e84c05f53f31b38854dcbf99fd1bf78d80c6dd396f2f9ed05842403225",
+      "type": "file"
+    },
+    {
+      "byte_size": 2836,
+      "path": ".claude/control-plane/scripts/load_manifest.py",
+      "sha256": "fb2fa7463aa4967e13205d8c1f11ee420e47531fbf359f7103f4d76f83a27c59",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/control-plane/state/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/hooks/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/rules/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/skills/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    },
+    {
+      "byte_size": 1,
+      "path": ".claude/workflows/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "type": "file"
+    }
+  ],
+  "schema_version": "1.0"
+}
