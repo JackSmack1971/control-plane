@@ -6,12 +6,17 @@ import argparse
 import json
 import subprocess
 
-from common import PolicyError, repo_path, repository_root
+from common import PolicyError, rejection, repo_path, repository_root
 from load_manifest import load_manifest
 
 
 def _within(path: str, roots: list[str]) -> bool:
     return any(path == root or path.startswith(root + "/") for root in roots)
+
+
+def _managed(path: str, manifest: dict) -> bool:
+    policy = manifest["transaction_policy"]
+    return _within(path, manifest["governed_roots"]) or path in policy["companion_files"] or _within(path, policy["companion_roots"])
 
 
 def changed_paths(root, revision: str) -> list[str]:
@@ -26,32 +31,32 @@ def changed_paths(root, revision: str) -> list[str]:
 def check_write_set(root, declared: list[str], revision: str) -> list[str]:
     manifest = load_manifest(root)
     if not declared:
-        return ["declared write set is empty"]
+        return [rejection("CP201", "declared write set is empty")]
     if len(declared) > manifest["budgets"]["maximum_changed_files"]:
-        return ["declared write set exceeds changed-file budget"]
+        return [rejection("CP202", "declared write set exceeds changed-file budget")]
     try:
         declared = [repo_path(root, path) for path in declared]
     except PolicyError as error:
         return [str(error)]
     if len(declared) != len(set(declared)):
-        return ["declared write set contains duplicate paths"]
+        return [rejection("CP203", "declared write set contains duplicate paths")]
     changed = [
         path
         for path in changed_paths(root, revision)
-        if _within(path, manifest["governed_roots"])
+        if _managed(path, manifest)
         and not _within(path, manifest["generated_file_roots"])
     ]
     errors = []
     if len(changed) > manifest["budgets"]["maximum_changed_files"]:
-        errors.append("changed-file budget exceeded")
+        errors.append(rejection("CP204", "changed-file budget exceeded"))
     for path in changed:
         if _within(path, manifest["forbidden_roots"]):
-            errors.append(f"forbidden changed path: {path}")
+            errors.append(rejection("CP205", f"forbidden changed path: {path}"))
         if path not in declared:
-            errors.append(f"changed path is outside declared write set: {path}")
+            errors.append(rejection("CP206", f"changed path is outside declared write set: {path}"))
     for path in declared:
         if path not in changed:
-            errors.append(f"declared path was not changed: {path}")
+            errors.append(rejection("CP207", f"declared path was not changed: {path}"))
     return errors
 
 

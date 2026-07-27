@@ -6,8 +6,9 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
-from state_store import read
+from state_store import append, make, read
 
 ROOT = Path(os.environ.get("CLAUDE_PROJECT_DIR", Path.cwd())).resolve()
 STATE = ROOT / ".claude/control-plane/state"
@@ -104,9 +105,9 @@ def write_paths(data: dict) -> list[str | None]:
 def allowed(path: str) -> tuple[bool, str]:
     forbidden, generated, owners = protected()
     if any(path == item or path.startswith(item + "/") for item in forbidden):
-        return False, "forbidden write path"
+        return False, "CP501: forbidden write path"
     if any(path == item or path.startswith(item + "/") for item in generated):
-        return False, "generated write path"
+        return False, "CP502: generated write path"
     owner = next(
         (
             name
@@ -118,28 +119,35 @@ def allowed(path: str) -> tuple[bool, str]:
         None,
     )
     if owner is None:
-        return False, "unowned write path"
+        return False, "CP503: unowned write path"
     try:
         recovery = read("recovery.json")
         if recovery["state"] == "rejected":
-            return False, "recovery state is incomplete"
+            return False, "CP504: recovery state is incomplete"
         declared = set(read("active-transaction.json")["recovery"]["evidence_paths"])
     except (OSError, KeyError, ValueError, json.JSONDecodeError):
-        return False, "no active declared write set"
-    return (True, "") if path in declared else (False, "undeclared write path")
+        return False, "CP505: no active declared write set"
+    return (True, "") if path in declared else (False, "CP506: undeclared write path")
 
 
 def main() -> int:
+    started = time.perf_counter()
     data = event()
     paths = write_paths(data)
+    reason = ""
     for path in paths:
         if path is None:
-            emit("PreToolUse", "unverifiable shell mutation")
-            return 0
+            reason = "CP507: unverifiable shell mutation"
+            break
         ok, reason = allowed(path)
         if not ok:
-            emit("PreToolUse", reason)
-            return 0
+            break
+    try:
+        append("telemetry.jsonl", make("control-plane-telemetry", "hook-guard", "active", "awaiting-approval", "guard decision", [], {"latency_ms": f"{(time.perf_counter() - started) * 1000:.3f}", "diagnostic": reason or "ALLOW"}))
+    except (OSError, ValueError):
+        pass
+    if reason:
+        emit("PreToolUse", reason)
     return 0
 
 

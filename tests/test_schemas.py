@@ -24,7 +24,7 @@ def validate(name, instance):
 
 
 EXAMPLES = {
-    "change-plan.schema.json": {"plan_id": "plan-001", "run_id": "run-001", "created_at": TIMESTAMP, "writer_id": "writer-001", "lifecycle": "draft", "write_set": [".claude/rules/example.md"], "baseline_id": "base-001", "operations": ["propose"], "content_hash": HASH},
+    "change-plan.schema.json": {"plan_id": "plan-001", "run_id": "run-001", "created_at": TIMESTAMP, "writer_id": "writer-001", "lifecycle": "draft", "mode": "control-plane-maintenance", "transaction_class": "standard", "write_set": [".claude/rules/example.md"], "baseline_id": "base-001", "operations": ["propose"], "content_hash": HASH},
     "baseline.schema.json": {"baseline_id": "base-001", "created_at": TIMESTAMP, "repository_revision": "b" * 40, "manifest_hash": HASH, "lifecycle": "active", "files": [{"path": ".claude/rules/example.md", "exists": True, "sha256": HASH, "mode": "644", "owner": "rule-config", "generated": False}], "content_hash": HASH},
     "run-event.schema.json": {"event_id": "event-001", "run_id": "run-001", "sequence": 0, "occurred_at": TIMESTAMP, "event_type": "run-started", "lifecycle": "open", "state": "RECEIVED", "details": {}, "previous_hash": "0" * 64, "event_hash": HASH},
     "verification.schema.json": {"verification_id": "verify-001", "run_id": "run-001", "verified_at": TIMESTAMP, "verifier_id": "verifier-001", "lifecycle": "completed", "deterministic_checks": [{"name": "pytest", "command": "pytest", "status": "passed", "output_hash": HASH}], "semantic_findings": [], "operations": ["read", "validate", "verify"], "content_hash": HASH},

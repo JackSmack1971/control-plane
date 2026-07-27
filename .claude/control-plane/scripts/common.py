@@ -8,6 +8,14 @@ from pathlib import Path, PurePosixPath
 class PolicyError(ValueError):
     """Raised when manifest policy is unsafe or invalid."""
 
+    def __init__(self, message: str):
+        super().__init__(message if message.startswith("CP") else rejection("CP000", message))
+
+
+def rejection(code: str, message: str) -> str:
+    """Return a stable, actionable rejection message."""
+    return f"{code}: {message}"
+
 
 def repository_root(start: Path | None = None) -> Path:
     """Find the repository root without trusting the process working directory."""

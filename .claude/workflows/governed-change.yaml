@@ -1,8 +1,10 @@
 version: "1.0"
-trigger: requested governed configuration change
+trigger: requested control-plane-maintenance change
 prerequisites: [clean-worktree, explicit-write-set, baseline]
 state_schema: .claude/control-plane/schemas/workflow-state.schema.json
 stages: [classify, baseline, plan, apply, deterministic-validation, independent-verification]
+transaction_classes: [lightweight, standard, sensitive]
+application_development: no control-plane transaction; application paths remain readable
 owning_specialist: workflow-specialist
 permitted_mutations: [declared-owned-non-generated-paths]
 deterministic_gates: [create_baseline.py, check_write_set.py, validate.py]

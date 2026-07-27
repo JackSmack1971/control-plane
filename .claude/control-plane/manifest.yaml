@@ -116,3 +116,13 @@ permission_policy:
     - curl
     - wget
     - Invoke-WebRequest
+transaction_policy:
+  companion_roots: [tests, evals, docs]
+  companion_files: [README.md]
+  classes:
+    lightweight: {maximum_changed_files: 3}
+    standard: {maximum_changed_files: 10}
+    sensitive: {maximum_changed_files: 20, independent_review: true}
+  modes:
+    application-development: {transaction_required: false}
+    control-plane-maintenance: {transaction_required: true}

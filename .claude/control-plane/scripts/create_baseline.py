@@ -9,7 +9,7 @@ import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 
-from common import PolicyError, repo_path, repository_root
+from common import PolicyError, rejection, repo_path, repository_root
 from inventory import canonical_bytes, check_inventory, sha256
 from load_manifest import load_manifest
 
@@ -19,7 +19,14 @@ def _owner(path: str, manifest: dict[str, object]) -> str:
         prefix = entry["pattern"].removesuffix("/**")
         if path.startswith(prefix + "/") or path == prefix:
             return entry["specialist"]
-    raise PolicyError(f"no policy owner for path: {path}")
+    if _companion(path, manifest):
+        return "companion"
+    raise PolicyError(rejection("CP101", f"no policy owner for path: {path}"))
+
+
+def _companion(path: str, manifest: dict[str, object]) -> bool:
+    policy = manifest["transaction_policy"]
+    return path in policy["companion_files"] or any(path == root or path.startswith(root + "/") for root in policy["companion_roots"])
 
 
 def _generated(path: str, manifest: dict[str, object]) -> bool:
@@ -48,18 +55,18 @@ def build_baseline(root: Path, baseline_id: str, write_set: list[str]) -> dict[s
     manifest = load_manifest(root)
     inventory_path = root / "INVENTORY.json"
     if not check_inventory(root, inventory_path):
-        raise PolicyError("committed inventory is missing or does not match the working tree")
+        raise PolicyError(rejection("CP102", "committed inventory is missing or does not match the working tree"))
     if not write_set or len(write_set) > manifest["budgets"]["maximum_changed_files"]:
-        raise PolicyError("write set must contain 1 to maximum_changed_files paths")
+        raise PolicyError(rejection("CP103", "write set must contain 1 to maximum_changed_files paths"))
     safe = []
     for value in write_set:
         path = repo_path(root, value)
         if any(path == forbidden or path.startswith(forbidden + "/") for forbidden in manifest["forbidden_roots"]):
-            raise PolicyError(f"forbidden write target: {path}")
-        if not any(path == governed or path.startswith(governed + "/") for governed in manifest["governed_roots"]):
-            raise PolicyError(f"undeclared write target: {path}")
+            raise PolicyError(rejection("CP104", f"forbidden write target: {path}"))
+        if not any(path == governed or path.startswith(governed + "/") for governed in manifest["governed_roots"]) and not _companion(path, manifest):
+            raise PolicyError(rejection("CP105", f"write target is neither governed nor an allowed companion: {path}"))
         if _generated(path, manifest):
-            raise PolicyError(f"generated write target: {path}")
+            raise PolicyError(rejection("CP106", f"generated write target: {path}"))
         safe.append(path)
     if len(set(safe)) != len(safe):
         raise PolicyError("write set contains duplicate paths")

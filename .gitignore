@@ -9,3 +9,4 @@ build/
 .claude/settings.local.json
 CLAUDE.local.md
 .claude/control-plane/runs/
+.claude/control-plane/state/

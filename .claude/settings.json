@@ -4,8 +4,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\instructions_loaded.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/instructions_loaded.py",
             "timeout": 3,
             "type": "command"
           }
@@ -17,8 +16,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\post_compact.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/post_compact.py",
             "timeout": 3,
             "type": "command"
           }
@@ -30,8 +28,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/record_mutation.py",
             "timeout": 3,
             "type": "command"
           }
@@ -41,44 +38,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(rm *)",
-            "shell": "powershell",
-            "timeout": 3,
-            "type": "command"
-          },
-          {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(mv *)",
-            "shell": "powershell",
-            "timeout": 3,
-            "type": "command"
-          },
-          {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(cp *)",
-            "shell": "powershell",
-            "timeout": 3,
-            "type": "command"
-          },
-          {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(git apply *)",
-            "shell": "powershell",
-            "timeout": 3,
-            "type": "command"
-          },
-          {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(git config *)",
-            "shell": "powershell",
-            "timeout": 3,
-            "type": "command"
-          },
-          {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
-            "if": "Bash(python *)",
-            "shell": "powershell",
+            "command": "python .claude/hooks/record_mutation.py",
             "timeout": 3,
             "type": "command"
           }
@@ -90,8 +50,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_failure.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/record_failure.py",
             "timeout": 3,
             "type": "command"
           }
@@ -103,8 +62,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\pre_compact.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/pre_compact.py",
             "timeout": 3,
             "type": "command"
           }
@@ -116,8 +74,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/guard_write.py",
             "timeout": 3,
             "type": "command"
           }
@@ -127,8 +84,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/guard_write.py",
             "timeout": 3,
             "type": "command"
           }
@@ -140,8 +96,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\session_end.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/session_end.py",
             "timeout": 3,
             "type": "command"
           }
@@ -153,8 +108,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/validate_dirty_state.py",
             "timeout": 5,
             "type": "command"
           }
@@ -165,8 +119,7 @@
       {
         "hooks": [
           {
-            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"",
-            "shell": "powershell",
+            "command": "python .claude/hooks/validate_dirty_state.py",
             "timeout": 5,
             "type": "command"
           }
@@ -201,18 +154,12 @@
     "deny": [
       "Read(./.git/**)",
       "Edit(./.git/**)",
-      "Read(./app/**)",
-      "Edit(./app/**)",
       "Read(./credentials/**)",
       "Edit(./credentials/**)",
       "Read(./docs/claude-code-docs/**)",
       "Edit(./docs/claude-code-docs/**)",
-      "Read(./lib/**)",
-      "Edit(./lib/**)",
       "Read(./secrets/**)",
       "Edit(./secrets/**)",
-      "Read(./src/**)",
-      "Edit(./src/**)",
       "WebFetch",
       "Bash(curl*)",
       "Bash(wget*)",

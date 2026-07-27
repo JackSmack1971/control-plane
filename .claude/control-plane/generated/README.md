@@ -4,7 +4,7 @@
 
 These files are derived from `../manifest.yaml`. Run:
 
-```powershell
+```sh
 python .claude/control-plane/scripts/generate_policy.py
 python .claude/control-plane/scripts/generate_policy.py --check
 ```

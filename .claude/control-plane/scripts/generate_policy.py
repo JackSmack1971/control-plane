@@ -23,7 +23,7 @@ def _yaml(value: object) -> str:
 
 
 def permission_policy(manifest: dict) -> dict:
-    roots = [*manifest["permission_policy"]["protected_roots"], *manifest["forbidden_roots"]]
+    roots = [*manifest["permission_policy"]["protected_roots"], *[root for root in manifest["forbidden_roots"] if root not in {"src", "app", "lib"}]]
     protected = sorted(set(roots))
     policy = manifest["permission_policy"]
     ask_paths = [f"Edit(./{entry})" if entry.endswith(".json") else f"Edit(./{entry}/**)" for entry in manifest["governed_roots"]]
@@ -51,7 +51,7 @@ def render(manifest: dict) -> dict[str, str]:
     ownership = {item["pattern"]: item["specialist"] for item in manifest["specialist_ownership"]}
     permissions = permission_policy(manifest)
     outputs = {
-        "README.md": "<!-- " + HEADER + " -->\n\n# Generated policy\n\nThese files are derived from `../manifest.yaml`. Run:\n\n```powershell\npython .claude/control-plane/scripts/generate_policy.py\npython .claude/control-plane/scripts/generate_policy.py --check\n```\n",
+        "README.md": "<!-- " + HEADER + " -->\n\n# Generated policy\n\nThese files are derived from `../manifest.yaml`. Run:\n\n```sh\npython .claude/control-plane/scripts/generate_policy.py\npython .claude/control-plane/scripts/generate_policy.py --check\n```\n",
         "ownership-map.json": _json({"ownership": ownership}),
         "protected-paths.json": _json({"forbidden_roots": manifest["forbidden_roots"], "generated_file_roots": manifest["generated_file_roots"]}),
         "agent-capabilities.json": _json({"agents": manifest["agent_profiles"], "operations": manifest["operations"], "verifier_restrictions": manifest["verifier_restrictions"]}),

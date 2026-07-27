@@ -43,9 +43,9 @@
       "type": "file"
     },
     {
-      "byte_size": 2988,
+      "byte_size": 3373,
       "path": ".claude/control-plane/manifest.yaml",
-      "sha256": "733ed7fb1562b26adef9c95135f81d351e819b813579d2dd5efdc917ef28220e",
+      "sha256": "730e755e123c9a76e633c8db6de404a277f877b31b824aa45e4c2316c2775042",
       "type": "file"
     },
     {
@@ -61,15 +61,15 @@
       "type": "file"
     },
     {
-      "byte_size": 1241,
+      "byte_size": 1391,
       "path": ".claude/control-plane/schemas/change-plan.schema.json",
-      "sha256": "5820a5797cda65df17fab3c77c86e53dc7fa2bb969fd58df6fa8c2b9ef93664a",
+      "sha256": "d76844edf11546c485953fad90e937c4447e4871511e6c81f18e6e23fb29dcbe",
       "type": "file"
     },
     {
-      "byte_size": 5431,
+      "byte_size": 6760,
       "path": ".claude/control-plane/schemas/manifest.schema.json",
-      "sha256": "cdc37e1629cca441ee24559d60335fe52a00580755a690ff96ead42c05496a84",
+      "sha256": "175cef87b04274a1f2861d8be52e5e3832a650ef59cb4eb08a4bcd9bb1f32073",
       "type": "file"
     },
     {
@@ -133,15 +133,15 @@
       "type": "file"
     },
     {
-      "byte_size": 2972,
+      "byte_size": 3335,
       "path": ".claude/control-plane/scripts/check_write_set.py",
-      "sha256": "5f1dd48e28cc1021e7285d8e7dee2cb2f51c818abe819bdebe160e2d82b19f1f",
+      "sha256": "1c7d0f7ff33df76fc5c5e62ac4dda024d1b4d0910ac38a5d485893fb2969c25a",
       "type": "file"
     },
     {
-      "byte_size": 1690,
+      "byte_size": 1962,
       "path": ".claude/control-plane/scripts/common.py",
-      "sha256": "5201ce57c536079a55f5462e975095c0841118bca15f6661b23bfab141f9956d",
+      "sha256": "f11643d630fe5eae183496136b8dd8be94212a45757e18931e068c46fc5f48b2",
       "type": "file"
     },
     {
@@ -151,15 +151,15 @@
       "type": "file"
     },
     {
-      "byte_size": 5732,
+      "byte_size": 6239,
       "path": ".claude/control-plane/scripts/create_baseline.py",
-      "sha256": "1c73c4006fe419cb5e65aa00645274003f98af19d1fc42662e759153ddb6b92d",
+      "sha256": "49174d6aa0a5c50063e07ea5b09fc42e61b4b3f7207385d75ce2d3e8ee72889d",
       "type": "file"
     },
     {
-      "byte_size": 5040,
+      "byte_size": 5088,
       "path": ".claude/control-plane/scripts/generate_policy.py",
-      "sha256": "2b0095e774e28245f2f537ee5972f9c36e1f0fd9402cf8f71165db93d08f6a7a",
+      "sha256": "1cb413e0e9fc4dc6165c7a7ac332faf1194033d161e5b6afa809d217976098b3",
       "type": "file"
     },
     {
@@ -175,9 +175,9 @@
       "type": "file"
     },
     {
-      "byte_size": 4180,
+      "byte_size": 5989,
       "path": ".claude/control-plane/scripts/new_run.py",
-      "sha256": "2f6f2e8169d941518ed3a8dc860134022fee02be94f03c63eeb0e993c8bfbf6f",
+      "sha256": "61be27126e19495172fdfbefd62633ffecf9b90607e081e9b9a5ac58e25f52d3",
       "type": "file"
     },
     {
@@ -193,9 +193,9 @@
       "type": "file"
     },
     {
-      "byte_size": 11108,
+      "byte_size": 11675,
       "path": ".claude/control-plane/scripts/validate.py",
-      "sha256": "0f80b3569f6dd6450b6fb044dde82998298f4fac3c69ecae624319aae634ac83",
+      "sha256": "fb3b8cff14792dedeaeaa93ff776aa4b4815c25959f101d2333e2f47a5aff5af",
       "type": "file"
     },
     {
@@ -217,9 +217,9 @@
       "type": "file"
     },
     {
-      "byte_size": 4704,
+      "byte_size": 5111,
       "path": ".claude/hooks/guard_write.py",
-      "sha256": "e192df19eb066f4ae484b707a0587d445ad7cbb74dda5f8e771d6e1dc58604df",
+      "sha256": "432efdb7fbafca302092cd74da1ff156542d1b34f890073b3a63e0531a6a7f42",
       "type": "file"
     },
     {
@@ -265,9 +265,9 @@
       "type": "file"
     },
     {
-      "byte_size": 746,
+      "byte_size": 870,
       "path": ".claude/hooks/validate_dirty_state.py",
-      "sha256": "e3ad3419ece0ac65c804791dc30b69c93f0825cc7d58f5738ec737d67639aff3",
+      "sha256": "7a576d83295559a8eb7e53f97e243db3f9f47fd24245de1ecee234034cc46ed1",
       "type": "file"
     },
     {
@@ -325,9 +325,9 @@
       "type": "file"
     },
     {
-      "byte_size": 5997,
+      "byte_size": 3819,
       "path": ".claude/settings.json",
-      "sha256": "d86af548e4173cb796a0d54b1cac910abbcf781bee1ea267710a8a348443c322",
+      "sha256": "200781cb26967eb6aee99812a927c5e5068d31f5b8e8cd11cedda21a0730a7be",
       "type": "file"
     },
     {
@@ -379,9 +379,9 @@
       "type": "file"
     },
     {
-      "byte_size": 641,
+      "byte_size": 945,
       "path": ".claude/skills/start-control-plane-transaction/SKILL.md",
-      "sha256": "291dcd8e2055c64e2ad40cefc12a5c79c66374195d4d92703bad9ca9d193b184",
+      "sha256": "c8be4de39ebb3d140e4cec4a2e952c3aee0dd868d6f1e038369488ec39cc7540",
       "type": "file"
     },
     {
@@ -415,9 +415,9 @@
       "type": "file"
     },
     {
-      "byte_size": 741,
+      "byte_size": 889,
       "path": ".claude/workflows/governed-change.yaml",
-      "sha256": "a5e5ac94d962198aaa4fcbb87727297e384d3ccb8465309f2903e92094ddbcf6",
+      "sha256": "62b33eedebb55e37fde07208963c16a200386dbddf8445f03743aaddfacba66c",
       "type": "file"
     },
     {

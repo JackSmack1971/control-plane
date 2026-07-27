@@ -166,6 +166,14 @@ def _check_run(root: Path, run_id: str, report: Report) -> None:
                 report.error(f"{name} run_id does not match transaction")
         if plan.get("baseline_id") != baseline.get("baseline_id"):
             report.error("plan baseline_id does not match baseline")
+        transaction_class = plan.get("transaction_class")
+        classes = manifest["transaction_policy"]["classes"]
+        if transaction_class not in classes:
+            report.error("CP701: transaction class is not declared by manifest policy")
+        elif len(plan["write_set"]) > classes[transaction_class]["maximum_changed_files"]:
+            report.error("CP702: transaction write set exceeds its class limit")
+        if plan.get("mode") != "control-plane-maintenance":
+            report.error("CP703: transaction plan has an invalid maintenance mode")
         if result.get("verification_id") != verification.get("verification_id"):
             report.error("result verification_id does not match verification")
         if anchor.get("repository_revision") != baseline.get("repository_revision") or anchor.get("manifest_hash") != baseline.get("manifest_hash"):
