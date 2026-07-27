@@ -24,6 +24,15 @@ def protected() -> tuple[set[str], set[str], dict[str, str]]:
         return set(policy["forbidden_roots"]), set(policy["generated_file_roots"]), owners
     except (OSError, KeyError, json.JSONDecodeError): return {".git"}, {".claude/control-plane/generated"}, {}
 
+def safe_bash(command: str) -> bool:
+    if re.search(r"[;&|><$`()\r\n]", command): return False
+    try:
+        policy = json.loads((ROOT / ".claude/control-plane/generated/permission-policy.json").read_text())
+        allowed = [item[5:-2] for item in policy["permissions"]["allow"] if item.startswith("Bash(") and item.endswith("*)")]
+    except (OSError, KeyError, json.JSONDecodeError):
+        allowed = []
+    return any(command.strip().startswith(item) for item in allowed) or bool(READ_ONLY.match(command))
+
 def rel(value: object) -> str | None:
     if not isinstance(value, str) or not value: return None
     try: return (Path(value).resolve().relative_to(ROOT)).as_posix()
@@ -34,7 +43,7 @@ def write_paths(data: dict) -> list[str | None]:
     if tool in {"Write", "Edit", "NotebookEdit"}: return [rel(args.get("file_path"))]
     if tool != "Bash": return []
     command = str(args.get("command", ""))
-    if READ_ONLY.match(command) and not MUTATING.search(command): return []
+    if safe_bash(command): return []
     values = re.findall(r"(?:>|>>|\b(?:rm|mv|cp|mkdir|touch|tee)\s+)(?:['\"]([^'\"]+)['\"]|([^\s;&|]+))", command)
     return [rel(a or b) for a, b in values] or [None]
 

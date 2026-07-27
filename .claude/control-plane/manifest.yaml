@@ -93,3 +93,26 @@ derived_artifacts:
   - .claude/control-plane/generated/agent-capabilities.json
   - .claude/control-plane/generated/policy-summary.md
   - .claude/control-plane/generated/ownership-evals.yaml
+  - .claude/control-plane/generated/permission-policy.json
+permission_policy:
+  protected_roots:
+    - .git
+    - secrets
+    - credentials
+  read_only_commands:
+    - git status
+    - git diff
+    - git log
+    - git show
+    - git branch
+    - rg
+    - Get-Content
+  validator_commands:
+    - python .claude/control-plane/scripts/generate_policy.py --check
+    - python .claude/control-plane/scripts/validate.py
+    - python -m pytest
+    - ruff check
+  network_commands:
+    - curl
+    - wget
+    - Invoke-WebRequest

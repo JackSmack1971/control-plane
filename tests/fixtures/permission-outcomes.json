@@ -1,0 +1,9 @@
+{
+  "fixtures": [
+    {"outcome": "allow", "tool": "Bash", "input": "git status --short"},
+    {"outcome": "allow", "tool": "Bash", "input": "python -m pytest tests"},
+    {"outcome": "ask", "tool": "Edit", "input": "./.claude/hooks/guard_write.py"},
+    {"outcome": "deny", "tool": "Read", "input": "./.git/config"},
+    {"outcome": "deny", "tool": "Bash", "input": "curl https://example.test"}
+  ]
+}

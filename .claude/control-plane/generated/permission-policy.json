@@ -1,0 +1,56 @@
+{
+  "_generated": "Generated from .claude/control-plane/manifest.yaml; do not edit.",
+  "permissions": {
+    "allow": [
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(rg*)",
+      "Bash(Get-Content*)",
+      "Bash(python .claude/control-plane/scripts/generate_policy.py --check*)",
+      "Bash(python .claude/control-plane/scripts/validate.py*)",
+      "Bash(python -m pytest*)",
+      "Bash(ruff check*)"
+    ],
+    "ask": [
+      "Edit(./.claude/settings.json)",
+      "Edit(./.claude/agents/**)",
+      "Edit(./.claude/hooks/**)",
+      "Edit(./.claude/rules/**)",
+      "Edit(./.claude/skills/**)",
+      "Edit(./.claude/workflows/**)",
+      "Edit(./.claude/control-plane/**)"
+    ],
+    "defaultMode": "default",
+    "deny": [
+      "Read(./.git/**)",
+      "Edit(./.git/**)",
+      "Read(./app/**)",
+      "Edit(./app/**)",
+      "Read(./credentials/**)",
+      "Edit(./credentials/**)",
+      "Read(./docs/claude-code-docs/**)",
+      "Edit(./docs/claude-code-docs/**)",
+      "Read(./lib/**)",
+      "Edit(./lib/**)",
+      "Read(./secrets/**)",
+      "Edit(./secrets/**)",
+      "Read(./src/**)",
+      "Edit(./src/**)",
+      "WebFetch",
+      "Bash(curl*)",
+      "Bash(wget*)",
+      "Bash(Invoke-WebRequest*)"
+    ]
+  },
+  "sandbox": {
+    "limitation": "Project settings cannot sandbox native Windows or non-Bash tools, hooks, or MCP servers.",
+    "supported_platforms": [
+      "macOS",
+      "Linux",
+      "WSL2"
+    ]
+  }
+}

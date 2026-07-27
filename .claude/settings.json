@@ -1,34 +1,222 @@
 {
   "hooks": {
-    "PreToolUse": [
-      {"matcher": "Edit|Write|NotebookEdit", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3}]},
-      {"matcher": "Bash", "hooks": [
-        {"type": "command", "if": "Bash(rm *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(mv *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(cp *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(git apply *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(git config *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(python *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(powershell *Set-Content*)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"", "timeout": 3}
-      ]}
+    "InstructionsLoaded": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\instructions_loaded.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "session_start|nested_traversal|path_glob_match|include|compact"
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\post_compact.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "manual|auto"
+      }
     ],
     "PostToolUse": [
-      {"matcher": "Edit|Write|NotebookEdit", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3}]},
-      {"matcher": "Bash", "hooks": [
-        {"type": "command", "if": "Bash(rm *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(mv *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(cp *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(git apply *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(git config *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3},
-        {"type": "command", "if": "Bash(python *)", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"", "timeout": 3}
-      ]}
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit|Write|NotebookEdit"
+      },
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(rm *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          },
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(mv *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          },
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(cp *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          },
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(git apply *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          },
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(git config *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          },
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_mutation.py\"",
+            "if": "Bash(python *)",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
     ],
-    "PostToolUseFailure": [{"matcher": "*", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_failure.py\"", "timeout": 3}]}],
-    "Stop": [{"hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"", "timeout": 5}]}],
-    "SubagentStop": [{"hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"", "timeout": 5}]}],
-    "InstructionsLoaded": [{"matcher": "session_start|nested_traversal|path_glob_match|include|compact", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\instructions_loaded.py\"", "timeout": 3}]}],
-    "PreCompact": [{"matcher": "manual|auto", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\pre_compact.py\"", "timeout": 3}]}],
-    "PostCompact": [{"matcher": "manual|auto", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\post_compact.py\"", "timeout": 3}]}],
-    "SessionEnd": [{"matcher": "*", "hooks": [{"type": "command", "shell": "powershell", "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\session_end.py\"", "timeout": 3}]}]
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\record_failure.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\pre_compact.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "manual|auto"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit|Write|NotebookEdit"
+      },
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\guard_write.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\session_end.py\"",
+            "shell": "powershell",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"",
+            "shell": "powershell",
+            "timeout": 5,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "command": "& python \"$env:CLAUDE_PROJECT_DIR\\.claude\\hooks\\validate_dirty_state.py\"",
+            "shell": "powershell",
+            "timeout": 5,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(rg*)",
+      "Bash(Get-Content*)",
+      "Bash(python .claude/control-plane/scripts/generate_policy.py --check*)",
+      "Bash(python .claude/control-plane/scripts/validate.py*)",
+      "Bash(python -m pytest*)",
+      "Bash(ruff check*)"
+    ],
+    "ask": [
+      "Edit(./.claude/settings.json)",
+      "Edit(./.claude/agents/**)",
+      "Edit(./.claude/hooks/**)",
+      "Edit(./.claude/rules/**)",
+      "Edit(./.claude/skills/**)",
+      "Edit(./.claude/workflows/**)",
+      "Edit(./.claude/control-plane/**)"
+    ],
+    "defaultMode": "default",
+    "deny": [
+      "Read(./.git/**)",
+      "Edit(./.git/**)",
+      "Read(./app/**)",
+      "Edit(./app/**)",
+      "Read(./credentials/**)",
+      "Edit(./credentials/**)",
+      "Read(./docs/claude-code-docs/**)",
+      "Edit(./docs/claude-code-docs/**)",
+      "Read(./lib/**)",
+      "Edit(./lib/**)",
+      "Read(./secrets/**)",
+      "Edit(./secrets/**)",
+      "Read(./src/**)",
+      "Edit(./src/**)",
+      "WebFetch",
+      "Bash(curl*)",
+      "Bash(wget*)",
+      "Bash(Invoke-WebRequest*)"
+    ]
   }
 }

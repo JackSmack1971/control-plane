@@ -23,6 +23,7 @@ def test_manifest_loads_and_normalizes_paths():
         ".claude/control-plane/generated/agent-capabilities.json",
         ".claude/control-plane/generated/policy-summary.md",
         ".claude/control-plane/generated/ownership-evals.yaml",
+        ".claude/control-plane/generated/permission-policy.json",
     ]
 
 

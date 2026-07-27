@@ -56,10 +56,11 @@ def test_guard_emits_a_denial_for_an_undeclared_write(monkeypatch, tmp_path, cap
     assert json.loads(capsys.readouterr().out)["hookSpecificOutput"]["permissionDecision"] == "deny"
 
 
-def test_settings_use_conditional_bash_handlers():
+def test_settings_guard_every_bash_command():
     settings = json.loads((ROOT / ".claude/settings.json").read_text())
     bash = next(item for item in settings["hooks"]["PreToolUse"] if item["matcher"] == "Bash")
-    assert all("if" in item for item in bash["hooks"])
+    assert len(bash["hooks"]) == 1
+    assert "if" not in bash["hooks"][0]
 
 
 def test_mutation_and_failure_hooks_persist_evidence(monkeypatch, tmp_path):
